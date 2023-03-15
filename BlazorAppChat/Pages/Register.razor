@@ -1,0 +1,70 @@
+﻿@page "/register"
+@using AppChat.Domain.Abstractions;
+@using Microsoft.AspNetCore.Identity;
+@inject IAccountManager users
+<h3>Register</h3>
+
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Name</label>
+            <InputText class="form-control" @bind-Value="register.Name" placeholder="Name"></InputText>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <InputText class="form-control" @bind-Value="register.Email" placeholder="Email" type="email"></InputText>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Phone</label>
+            <InputText class="form-control" @bind-Value="register.Phone" placeholder="Phone" type="Phone"></InputText>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <InputText class="form-control" @bind-Value="register.Password" placeholder="Password" type="password"></InputText>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" @onclick="RegisterAsync">Sign in</button>
+</form>
+@code {
+    public UserRegister register = new();
+
+    public async Task RegisterAsync()
+    {
+        // TODO: Register user
+        //IdentityUser identityUser = new IdentityUser(register.Email);
+        //identityUser.Email = register.Email;
+        //identityUser.NormalizedUserName = register.Name;
+        //identityUser.PhoneNumber = register.Phone;
+        //UserManager<IdentityUser> userManager = new UserManager<IdentityUser>();
+        //userManager.CreateAsync(identityUser);
+        try
+        {
+            await users.CreateAsync(new AppChat.Domain.Account
+            {
+                UserName = this.register.Email,
+                Name = this.register.Name,
+                Email = this.register.Email,
+                PhoneNumber = this.register.Phone
+            });
+        }
+        catch (Exception ex)
+        {
+            
+            throw;
+        }
+    }
+
+    public class UserRegister
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Phone { get; set; }
+    }
+}
