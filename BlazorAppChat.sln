@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppChat.Server", "AppChat.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatApp.Bots.StockApi", "ChatApp.Bots.StockApi\ChatApp.Bots.StockApi.csproj", "{747E2308-DD4C-4555-A9FC-A5246BF90090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppChat.Tests", "AppChat.Tests\AppChat.Tests.csproj", "{84058EA1-5AB2-4166-92F8-ACBD133B7DE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppChat.Tests", "AppChat.Tests\AppChat.Tests.csproj", "{84058EA1-5AB2-4166-92F8-ACBD133B7DE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{A8C7456A-1183-458D-8DFA-FDCBC9CCE4C2}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseCreation.sql = DatabaseCreation.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

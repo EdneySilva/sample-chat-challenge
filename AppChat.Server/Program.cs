@@ -16,10 +16,10 @@ namespace AppChat.Server
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddStorage((options) =>
             {
-                options.UseSqlServer("data source=localhost; user=sa; pwd=p@ssw0rd; initial catalog=webchat; TrustServerCertificate=True");
+                options.UseSqlServer(connectionString);
             }).AddManagers()
            .AddRooms((config) =>
             {
